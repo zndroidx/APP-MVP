@@ -3,11 +3,8 @@ package com.zndroid.ui.login;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -17,11 +14,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.zndroid.R;
-import com.zndroid.mvp.p.LoginPresenter;
+import com.zndroid.mvp.p.ExpressPresenter;
 import com.zndroid.mvp.v.LoginView;
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
-    LoginPresenter loginPresenter = new LoginPresenter();
+public class ExpressActivity extends AppCompatActivity implements LoginView {
+    ExpressPresenter loginPresenter = new ExpressPresenter();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,41 +27,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         loginPresenter.attachView(this);
 
-
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        };
-        getUsernameEditText().addTextChangedListener(afterTextChangedListener);
-        getPasswordEditText().addTextChangedListener(afterTextChangedListener);
-        getPasswordEditText().setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-
-                }
-                return false;
-            }
-        });
-
         getLoginButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getProgressBar().setVisibility(View.VISIBLE);
-
                 login();
             }
         });
@@ -88,6 +53,22 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public ProgressBar getProgressBar() {
         return findViewById(R.id.loading);
+    }
+
+    @Override
+    public void showResult(String s) {
+        if (TextUtils.isEmpty(s)) return;
+        ((TextView)findViewById(R.id.result_tv)).setText(s);
+    }
+
+    @Override
+    public void showProgressBar() {
+        getProgressBar().setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void closeProgressBar() {
+        getProgressBar().setVisibility(View.GONE);
     }
 
     @Override

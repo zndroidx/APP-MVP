@@ -18,6 +18,9 @@ public interface LoginView extends IView {
     EditText getPasswordEditText();
     Button getLoginButton();
     ProgressBar getProgressBar();
+    void showResult(String s);
+    void showProgressBar();
+    void closeProgressBar();
     void showToast(String msg);
     void login();
 }

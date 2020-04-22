@@ -15,5 +15,5 @@ public interface IModel<P> {
         void onCompleted();
     }
 
-    IModel observe(P params, CallBack callBack);
+    void observe(P params, CallBack callBack);
 }
