@@ -25,12 +25,14 @@ public class ExpressModel implements IModel<ExpressBody> {
                 callBack.onCompleted();
                 if (response.isSuccessful())
                     callBack.onSuccess(response.body());
+                else
+                    callBack.onFailed(response.message());
             }
 
             @Override
             public void onFailure(Call<ResposeResult> call, Throwable t) {
                 callBack.onCompleted();
-                callBack.onFailed(t.getCause());
+                callBack.onFailed(t.getMessage());
             }
         });
     }

@@ -27,12 +27,7 @@ public class ExpressActivity extends AppCompatActivity implements LoginView {
 
         loginPresenter.attachView(this);
 
-        getLoginButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        loginPresenter.initExpress();
     }
 
     @Override
@@ -74,11 +69,6 @@ public class ExpressActivity extends AppCompatActivity implements LoginView {
     @Override
     public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void login() {
-        loginPresenter.login(getUsernameEditText().getText().toString(), getPasswordEditText().getText().toString());
     }
 
     @Override

@@ -11,7 +11,6 @@ import java.util.List;
  * @description:
  */
 public class ResposeResult {
-
     /**
      * message : ok
      * nu : jhh87383945

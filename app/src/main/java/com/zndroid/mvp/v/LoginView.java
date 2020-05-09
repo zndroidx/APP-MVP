@@ -22,5 +22,4 @@ public interface LoginView extends IView {
     void showProgressBar();
     void closeProgressBar();
     void showToast(String msg);
-    void login();
 }
