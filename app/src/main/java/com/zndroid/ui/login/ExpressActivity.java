@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,25 +26,22 @@ public class ExpressActivity extends AppCompatActivity implements LoginView {
 
         loginPresenter.attachView(this);
 
-        loginPresenter.initExpress();
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginPresenter.login(getUsernameEditText().getText().toString(), getPasswordEditText().getText().toString());
+            }
+        });
     }
 
-    @Override
     public EditText getUsernameEditText() {
         return findViewById(R.id.username);
     }
 
-    @Override
     public EditText getPasswordEditText() {
         return findViewById(R.id.password);
     }
 
-    @Override
-    public Button getLoginButton() {
-        return findViewById(R.id.login);
-    }
-
-    @Override
     public ProgressBar getProgressBar() {
         return findViewById(R.id.loading);
     }

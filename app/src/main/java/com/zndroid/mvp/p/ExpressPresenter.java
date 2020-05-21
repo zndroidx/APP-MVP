@@ -19,25 +19,8 @@ import com.zndroid.network.ResposeResult;
  * @description:
  */
 public class ExpressPresenter extends BasePresenter<LoginView> {
-    public void initExpress() {
-        if (isAttached())
-            getView().getLoginButton().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String type = getView().getUsernameEditText().getText().toString();
-                    String postId = getView().getPasswordEditText().getText().toString();
 
-                    if (TextUtils.isEmpty(postId) || TextUtils.isEmpty(type)) {
-                        getView().showToast("您的输入为空");
-                        return;
-                    }
-
-                    login(type, postId);
-                }
-            });
-    }
-
-    private void login(String s, String s1) {
+    public void login(String s, String s1) {
         if (isAttached()) {
             getView().showProgressBar();
 

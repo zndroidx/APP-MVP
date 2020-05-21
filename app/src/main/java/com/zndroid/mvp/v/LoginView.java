@@ -1,9 +1,5 @@
 package com.zndroid.mvp.v;
 
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-
 
 /**
  * @name:LoginView
@@ -14,10 +10,6 @@ import android.widget.ProgressBar;
  * @description:
  */
 public interface LoginView extends IView {
-    EditText getUsernameEditText();
-    EditText getPasswordEditText();
-    Button getLoginButton();
-    ProgressBar getProgressBar();
     void showResult(String s);
     void showProgressBar();
     void closeProgressBar();
